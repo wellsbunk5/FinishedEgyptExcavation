@@ -1,0 +1,395 @@
+﻿@model EgyptExcavation.Models.Burial
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<center>
+    <h1>Burial Details</h1>
+    <br />
+    <br />
+    <img src="@Model.PhotoPath" class="figure-img" style="width:400px; height:300px" />
+</center>
+    <div>
+        <br />
+        <br />
+        <hr />
+       
+        <dl class="row">
+
+            <!--Basic Burial Info-->
+            <div class="container align-content-center text-center">
+                <center>
+                    <table class="table table-bordered table-striped w-50">
+                        <tr>
+                            <th>Researcher</th>
+                            <td>@($"{Model.User.FirstName} {Model.User.LastName}")</td>
+                        </tr>
+                        <tr>
+                            <th>Age Group</th>
+                            <td>@Html.DisplayFor(model => model.AgeGroup.Age_group)</td>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <td>@($"{Model.Location.Location_NS} {Model.Location.NS_low}/{Model.Location.NS_high} {Model.Location.Location_EW} {Model.Location.EW_low}/{Model.Location.EW_high} {Model.Location.Subplot} #{Model.Burial_number}")</td>
+                        </tr>
+                        <tr>
+                            <th>Hair Color</th>
+                            <td>@Html.DisplayFor(model => model.HairColor.Hair_color)</td>
+                        </tr>
+                        <tr>
+                            <th>Preservation Quality</th>
+                            <td>@Html.DisplayFor(model => model.Preservation.Quality)</td>
+                        </tr>
+                        <tr>
+                            <th>Preservation Index</th>
+                            <td>@Html.DisplayFor(model => model.Preservation.PreservationIndex)</td>
+                        </tr>
+                        <tr>
+                            <th>Burial Number</th>
+                            <td>@Html.DisplayFor(model => model.Burial_number)</td>
+                        </tr>
+                        <tr>
+                            <th>Depth</th>
+                            <td>@Html.DisplayFor(model => model.Depth)</td>
+                        </tr>
+                        <tr>
+                            <th>Direction of Head</th>
+                            <td>@Html.DisplayFor(model => model.Head_direction)</td>
+                        <tr>
+                            <th>Discovery Date</th>
+                            <td>@Html.DisplayFor(model => model.Discovery_date)</td>
+                        </tr>
+                        <tr>
+                            <th>Preservation Notes</th>
+                            <td>@Html.DisplayFor(model => model.Preservation_notes)</td>
+                        </tr>
+                        <tr>
+                            <th>South To Head</th>
+                            <td>@Html.DisplayFor(model => model.South_to_head)</td>
+                        </tr>
+                        <tr>
+                            <th>South To Feet</th>
+                            <td>@Html.DisplayFor(model => model.South_to_feet)</td>
+                        <tr>
+                            <th>West To Head</th>
+                            <td>@Html.DisplayFor(model => model.West_to_head)</td>
+                        </tr>
+                        <tr>
+                            <th>West To Feet</th>
+                            <td>@Html.DisplayFor(model => model.West_to_feet)</td>
+                        </tr>
+                        <tr>
+                            <th>Sample Number</th>
+                            <td>@Html.DisplayFor(model => model.Sample_number)</td>
+                        </tr>
+                        <tr>
+                            <th>GE Function Total</th>
+                            <td>@Html.DisplayFor(model => model.GE_function_total)</td>
+                        </tr>
+                        <tr>
+                            <th>Gender Body Column</th>
+                            <td>@Html.DisplayFor(model => model.Gender_body_col)</td>
+                        </tr>
+                        <tr>
+                            <th>Gender GE</th>
+                            <td>@Html.DisplayFor(model => model.Gender_GE)</td>
+                        </tr>
+
+                        <tr>
+                            <th>Artifacts Description</th>
+                            <td>@Html.DisplayFor(model => model.Artifacts_description)</td>
+                        </tr>
+                        <tr>
+                            <th>Hair Taken</th>
+                            <td>@Html.DisplayFor(model => model.Hair_taken)</td>
+                        </tr>
+                        <tr>
+                            <th>Soft Tissue Taken</th>
+                            <td>@Html.DisplayFor(model => model.Soft_tissue_taken)</td>
+                        </tr>
+                        <tr>
+                            <th>Bone Taken</th>
+                            <td>@Html.DisplayFor(model => model.Bone_taken)</td>
+                        </tr>
+                        <tr>
+                            <th>Tooth Taken</th>
+                            <td>@Html.DisplayFor(model => model.Tooth_taken)</td>
+                        </tr>
+                        <tr>
+                            <th>Textile Taken</th>
+                            <td>@Html.DisplayFor(model => model.Textile_taken)</td>
+                        </tr>
+                        <tr>
+                            <th>Textile Notes</th>
+                            <td>@Html.DisplayFor(model => model.Textile_notes)</td>
+                        </tr>
+                        <tr>
+                            <th>Artifact Found</th>
+                            <td>@Html.DisplayFor(model => model.Artifact_found)</td>
+                        </tr>
+                        <tr>
+                            <th>Estimate Age</th>
+                            <td>@Html.DisplayFor(model => model.Estimate_age)</td>
+                        </tr>
+                        <tr>
+                            <th>Estimate Living Stature</th>
+                            <td>@Html.DisplayFor(model => model.Estimate_living_stature)</td>
+                        </tr>
+                        <tr>
+                            <th>Tooth Attrition</th>
+                            <td>@Html.DisplayFor(model => model.Tooth_attrition)</td>
+                        </tr>
+                        <tr>
+                            <th>Tooth Eruption</th>
+                            <td>@Html.DisplayFor(model => model.Tooth_eruption)</td>
+                        </tr>
+                        <tr>
+                            <th>Pathology Anomalies</th>
+                            <td>@Html.DisplayFor(model => model.Pathology_anomalies)</td>
+                        </tr>
+                        <tr>
+                            <th>Epiphyseal Union</th>
+                            <td>@Html.DisplayFor(model => model.Epiphyseal_union)</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td> @Html.DisplayFor(model => model.Carbon.Category.CategoryID)</td>
+                        </tr>
+                        <tr>
+                            <th>Lab Name</th>
+                            <td>@Html.DisplayFor(model => model.Carbon.Lab.LabID)</td>
+                        </tr>
+
+                    </table>
+                </center>
+            </div>
+            <!--Bone data table-->
+            <div class="container text-center align-content-center">
+                <!--build collapsible button to view bone data-->
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#bones">Click here to view Bone Data</button>
+                <br />
+                <br />
+                <div id="bones" class="collapse">
+                    <center>
+                        <table class="table table-bordered table-striped w-50">
+                            <tr>
+                                <th>Basilar Suture</th>
+                                <td>@Html.DisplayFor(model => model.Basilar_structure)</td>
+                            </tr>
+                            <tr>
+                                <th>Ventral Arc</th>
+                                <td>@Html.DisplayFor(model => model.Ventral_arc)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Subpubic_angle)</th>
+                                <td>@Html.DisplayFor(model => model.Subpubic_angle)</td>
+                            </tr>
+                            <tr>
+                                <th>Sciatic Notch</th>
+                                <td>@Html.DisplayFor(model => model.Sciatic_notch)</td>
+                            </tr>
+                            <tr>
+                                <th>Pubic Bone</th>
+                                <td>@Html.DisplayFor(model => model.Pubic_bone)</td>
+                            </tr>
+                            <tr>
+                                <th>Preaur Sulcus</th>
+                                <td>@Html.DisplayFor(model => model.Preaur_sulcus)</td>
+                            </tr>
+                            <tr>
+                                <th>Medial IP Ramus</th>
+                                <td>@Html.DisplayFor(model => model.Medial_IP_ramus)</td>
+                            </tr>
+                            <tr>
+                                <th>Dorsal Pitting</th>
+                                <td>@Html.DisplayFor(model => model.Dorsal_pitting)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Osteophytosis)</th>
+                                <td>@Html.DisplayFor(model => model.Osteophytosis)</td>
+                            </tr>
+                            <tr>
+                                <th>Pubic Sympysis</th>
+                                <td>@Html.DisplayFor(model => model.Pubic_sympysis)</td>
+                            </tr>
+                            <tr>
+                                <th>Femur Head</th>
+                                <td>@Html.DisplayFor(model => model.Femur_head)</td>
+                            </tr>
+                            <tr>
+                                <th>Femur Length</th>
+                                <td>@Html.DisplayFor(model => model.Femur_length)</td>
+                            </tr>
+                            <tr>
+                                <th>Humerus Length</th>
+                                <td>@Html.DisplayFor(model => model.Humerus_length)</td>
+                            </tr>
+                            <tr>
+                                <th>Tibia Length</th>
+                                <td>@Html.DisplayFor(model => model.Tibia_length)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Robust)</th>
+                                <td>@Html.DisplayFor(model => model.Robust)</td>
+                            </tr>
+                            <tr>
+                                <th>Supraorbital Edge</th>
+                                <td>@Html.DisplayFor(model => model.Supraorbital)</td>
+                            </tr>
+                            <tr>
+                                <th>Orbital Edge</th>
+                                <td>@Html.DisplayFor(model => model.Orbital_edge)</td>
+                            </tr>
+                            <tr>
+                                <th>Parietal Bossing</th>
+                                <td>@Html.DisplayFor(model => model.Parietal_bossing)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Gonian)</th>
+                                <td>@Html.DisplayFor(model => model.Gonian)</td>
+                            </tr>
+                            <tr>
+                                <th>Nuchal Crest</th>
+                                <td>@Html.DisplayFor(model => model.Nuchal_crest)</td>
+                            </tr>
+                            <tr>
+                                <th>Zygomatic Crest</th>
+                                <td>@Html.DisplayFor(model => model.Zygomatic_crest)</td>
+                            </tr>
+                        </table>
+                    </center>
+                </div>
+            </div>
+
+            <!--Skull data table-->
+            <div class="container text-center align-content-center">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#skull">Click here to view Skull Data</button>
+                <br />
+                <br />
+                <div id="skull" class="collapse">
+                    <center>
+                        <table class="table table-bordered table-striped w-50">
+                            <tr>
+                                <th>Max Cranial Length</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Max_cranial_length)</td>
+                            </tr>
+                            <tr>
+                                <th>Max Cranial Breadth</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Max_cranial_breadth)</td>
+                            </tr>
+                            <tr>
+                                <th>Basion Bregma Height</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Basion_bregma_height)</td>
+                            </tr>
+                            <tr>
+                                <th>Basion Nasion</th>
+                                <td>@Html.DisplayFor(model => model.Skull.basion_nasion)</td>
+                            </tr>
+                            <tr>
+                                <th>Basion Prosthion Length</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Basion_prosthion_length)</td>
+                            </tr>
+                            <tr>
+                                <th>Bizygomatic Diameter</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Bizygomatic_diameter)</td>
+                            </tr>
+                            <tr>
+                                <th>Nasion Prosthion</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Nasion_prosthion)</td>
+                            </tr>
+                            <tr>
+                                <th>Max Nasal Breadth</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Max_nasal_breadth)</td>
+                            </tr>
+                            <tr>
+                                <th>Interorbital Breadth</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Interorbital_breadth)</td>
+                            </tr>
+                            <tr>
+                                <th>Buried With Artifacts</th>
+                                <td>@Html.DisplayFor(model => model.Skull.Buried_with_artifacts)</td>
+                            </tr>
+                        </table>
+                    </center>
+                </div>
+            </div>
+
+            <!--Carbon data table-->
+            <div class="container text-center align-content-center">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#carbon">Click here to view Carbon Data</button>
+                <br />
+                <br />
+                <div id="carbon" class="collapse">
+                    <center>
+                        <table class="table table-bordered table-striped w-50">
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Rack)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Rack)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Tube)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Tube)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Description)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Description)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Size_ml)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Size_ml)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Foci)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Foci)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.C14_sample_2017)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.C14_sample_2017)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Locations_description)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Locations_description)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Questions)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Questions)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Conventional_C14_age_bp)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Conventional_C14_age_bp)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.C14_calendar_date)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.C14_calendar_date)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Calibrated_95_calendar_date_max)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Calibrated_95_calendar_date_max)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Calibrated_95_calendar_date_min)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Calibrated_95_calendar_date_min)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Calibrated_95_calendar_date_span)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Calibrated_95_calendar_date_span)</td>
+                            </tr>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Carbon.Year_era)</th>
+                                <td>@Html.DisplayFor(model => model.Carbon.Year_era)</td>
+                            </tr>
+                        </table>
+                    </center>
+                </div>
+            </div>
+        </dl>
+       
+    </div>
+
+            
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.BurialID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+

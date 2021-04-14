@@ -1,0 +1,55 @@
+﻿@{ ViewData["Title"] = "Accounts"; }
+@model IQueryable<User>
+
+<br />
+<br />
+    <div class="row">
+        <!--<div class="col-1"></div>-->
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Reported Burials</th>
+                        <th>Edit Account</th>
+                        <th>Change Password</th>
+                        <th>Delete Account</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (User user in Model)
+                    {
+                    <tr>
+                        <td>@user.FirstName @user.LastName</td>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td><a asp-action="Index" asp-controller="Burials" asp-route-id="all-all-all-all-@user.FullName-all-all">Burials</a></td>
+                        <td>
+                            <form method="post" asp-controller="Account" asp-action="EditAccount">
+                                <input type="hidden" name="ID" id="ID" value="@user.Id" /><button class="btn-info" type="submit">Edit</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" asp-controller="Account" asp-action="ChangePassword">
+                                <input type="hidden" name="ID" id="ID" value="@user.Id" /><button class="btn-info" type="submit">Change Password</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" asp-controller="Account" asp-action="DeleteAccount">
+                                <input type="hidden" name="ID" id="ID" value="@user.Id" /><button class="btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <div class="text-center">
+                <a asp-controller="Account" asp-action="Register" class="btn btn-outline-primary">Register New User</a>
+            </div>
+        </div>
+        <!--<div class="col-10"></div>-->
+    </div>
+

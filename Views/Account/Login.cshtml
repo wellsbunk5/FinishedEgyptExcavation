@@ -1,0 +1,23 @@
+﻿@{ ViewData["Title"] = "Login"; }
+
+<br />
+<h2 class="text-center">Login</h2>
+<br />
+<br />
+<form class="text-center" method="post" asp-controller="Account" asp-action="Login" style="grid-column-start: 3; grid-column-end: span 2; grid-row-start: 4; /*grid-column-end: span 2;*/">
+    <div>
+        <label>Username: </label>
+        <input type="text" id="username" name="username" />
+        <br />
+    </div>
+    <br />
+    <div>
+        <label>Password: </label>
+        <input type="password" id="password" name="password" />
+        <br />
+    </div>
+    <br />
+    <button class="btn-outline-primary" type="submit">Login</button>
+</form>
+<br />
+<h2 class="text-center text-danger">@ViewBag.Fail</h2>

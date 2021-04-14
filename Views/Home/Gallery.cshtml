@@ -1,0 +1,24 @@
+﻿@{ ViewData["Title"] = "Gallery"; }
+@model IEnumerable<Burial>
+
+<style>
+    img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+    }
+</style>
+
+<h1 class="text-center">Fag el-Gamous Burial Gallery</h1>
+
+<br />
+<br />
+<center>
+    @foreach (Burial burial in Model)
+    {
+        <a target="_blank" href="@burial.PhotoPath">
+            <img src="@burial.PhotoPath" style="width:300px; height:300px" />
+        </a>
+     }
+</center>

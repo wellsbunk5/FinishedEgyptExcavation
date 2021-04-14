@@ -1,0 +1,32 @@
+﻿@model IQueryable<Burial>
+
+<div class="text-center">
+    <h2 class="display-4">List of Excavated Burials</h2>
+    <br /> 
+    <br />
+
+    <table class="table-hover table-striped table-bordered table-layout: auto">
+        <thead class="text-center">
+            <tr><th>BurialID</th><th>ResearcherID</th><th>Burial Number</th><th>Discovery Date</th></tr>
+        </thead>
+
+        <tbody class="text-center">
+            @foreach (Burial x in Model)
+            {
+                <tr>
+                    <td>
+                        <form method="post" asp-action="DeleteMovie">
+                            <input type="hidden" id="burialid" name="burialid" value="@x.BurialID" />
+                            <button type="submit" class="btn btn-danger"><a>@x.BurialID</a></button>
+                        </form>
+                    </td>
+                    <td>@x.UserID</td>
+                    <td>@x.Burial_number</td>
+                    <td>@x.Discovery_date</td>   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

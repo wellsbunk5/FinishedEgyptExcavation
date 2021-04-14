@@ -1,0 +1,198 @@
+﻿@model PaginatedList<EgyptExcavation.Models.Burial>
+
+@{ ViewData["Title"] = "Burials";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<style>
+    a:hover {
+        color: white;
+    }
+</style>
+
+<br />
+<h1>Fag el-Gamous Burials</h1>
+<br />
+<br />
+<div class="row">
+    <div class="col-sm-2">
+        <!--Filtering implemented here-->
+        <form asp-action="Filter" method="post">
+
+            <div class="form-group">
+                <label>Age Group:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.AgeGroups, "Age_group", "Age_group", ViewBag.Filters.AgeGroup))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Hair Color:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.HairColor, "Hair_color", "Hair_color", ViewBag.Filters.HairColor))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Preservation:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Preservations, "Quality", "Quality", ViewBag.Filters.Preservation))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Location:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Locations, ViewBag.Filters.Location))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Researcher:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Users, "FullName", "FullName", ViewBag.Filters.Researcher))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Depth:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Depth, ViewBag.Filters.Depth))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Head Direction:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.HeadDirection, ViewBag.Filters.HeadDirection))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+
+            <a asp-action="Index" asp-route-id="" class="btn btn-primary">Clear</a>
+
+        </form>
+    </div>
+    <div class="col-sm-10">
+        <p>
+            <!--Only researchers and admins can add burial records-->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-outline-primary" asp-action="Create">Add Burial Record</a>
+            }
+
+        </p>
+
+        <br />
+        <div style="overflow-x: auto;">
+            <table class="table table-hover table-striped table-bordered" style="table-layout: auto; width: 100%;">
+                <!--display burial information in the table-->
+                <thead>
+                    <tr>
+                        <th>
+                            Researcher @*@Html.DisplayNameFor(model => model.First().User)*@
+                        </th>
+                        <th>
+                            Age Group
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Location)
+                        </th>
+                        <th>
+                            Hair Color
+                        </th>
+                        <th>
+                            Preservation Quality
+                        </th>
+                        <th>
+                            Burial Depth (Meters)
+                        </th>
+                        <th>
+                            Discovery Date
+                        </th>
+                        <th>
+                            Estimate Age
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+            <tr>
+                <td>
+                    @($"{item.User.FullName}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgeGroup.Age_group)
+                </td>
+                <td>
+                    @($"{item.Location.Location_NS} {item.Location.NS_low}/{item.Location.NS_high} {item.Location.Location_EW} {item.Location.EW_low}/{item.Location.EW_high} {item.Location.Subplot} #{item.Burial_number}")
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HairColor.Hair_color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preservation.Quality)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Depth)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discovery_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estimate_age)
+                </td>
+
+
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <!--Researchers and admins can edit-->
+                        <a asp-action="Edit" asp-route-id="@item.BurialID" class="btn btn-sm btn-outline-info floated p-2" style="width:90px">Edit</a>
+
+                        <a asp-action="Details" asp-route-id="@item.BurialID" class="btn btn-sm btn-outline-info floated p-2" style="width:90px">Details</a>
+
+                        <a asp-action="Delete" asp-route-id="@item.BurialID" class="btn btn-sm btn-outline-info floated p-2" style="width:90px">Delete</a>
+
+                    }
+                    else
+                    {
+                      <!--all unauthenticated users can view details-->
+                        <a asp-action="Details" asp-route-id="@item.BurialID" class="btn btn-sm btn-outline-info floated p-2" style="width:90px">Details</a>
+                    }
+                </td>
+            </tr>}
+                </tbody>
+            </table>
+        </div>
+            <!--configure pagination buttons (if next page not available, button will be transparent-->
+            @{ var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.NextPage ? "disabled" : ""; }
+        <!--Previous button-->
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-id="@ViewBag.IdRoute"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <!--Next button-->
+        <a asp-action="Index"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-id="@ViewBag.IdRoute"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
+
+</div>
+
+

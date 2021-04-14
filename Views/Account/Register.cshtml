@@ -1,0 +1,36 @@
+﻿@model User
+
+<style>
+    label {
+        display: inline-block;
+        width: 140px;
+        text-align: right;
+    }
+</style>
+
+<br />
+<br />
+<h1 class="text-center">Add Researcher Account</h1>
+<br />
+<form method="post" asp-controller="Account" asp-action="Register" class="text-center">
+    <label asp-for="FirstName">First Name: </label>
+    <input asp-for="FirstName" />
+    <br />
+    <label asp-for="LastName">Last Name: </label>
+    <input asp-for="LastName" />
+    <br />
+    <label asp-for="Email">Email Address: </label>
+    <input required asp-for="Email" />
+    <br />
+    <label asp-for="UserName">Username: </label>
+    <input required asp-for="UserName" />
+    <br />
+    <label>Password: </label>
+    <input type="password" id="password" name="password" />
+    <br />
+    <br />
+    <button class="btn btn-info" type="submit">Add User</button>
+    <div asp-validation-summary="All"></div>
+</form>
+<br />
+<h3 class="text-center text-danger">@ViewBag.Message</h3>
