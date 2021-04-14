@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EgyptExcavation.Controllers
 {
+    // Controller to show and handle Burials
     public class BurialsController : Controller
     {
         // add in context
